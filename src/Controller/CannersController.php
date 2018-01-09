@@ -28,6 +28,18 @@ class CannersController extends AppController
         $this->set(compact('canners'));
     }
 
+    public function entry()
+    {
+
+  //     $this->paginate = [
+  //         'contain' => ['Users']
+  //      ];
+  //       $canners = $this->paginate($this->Canners);
+  //
+  //     $this->set(compact('canners'));
+    }
+
+
     /**
      * View method
      *
