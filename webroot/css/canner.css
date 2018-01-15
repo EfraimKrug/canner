@@ -2,3 +2,9 @@
 body {
 	background-image:'../img/garbage001.jpg';
 }
+
+.login {
+	width: 250px;
+	margin: 125px;
+	padding: 25px;
+}

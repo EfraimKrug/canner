@@ -45,17 +45,23 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 </head>
 <body class="home">
-
+<style>
+a {
+	border: 4px solid black;
+	padding: 8px;
+}
+</style>
 <header class="row">
-    <div class="header-image"><?= $this->Html->image('garbage001.jpg') ?></div>
     <div class="header-title">
-        <h1><?= $this->Html->link(__('New Canner?'), ['controller' => 'canners', 'action' => 'add']) ?>  
-	Making the world more beautiful! Moving garbage! 
-	<?= $this->Html->link(__('Find Your Canner?'), ['controller' => 'owners', 'action' => 'add']) ?> <br>
-	<?= $this->Html->link(__('Returning Canner?'), '/Canners/entry') ?>
-	<?= $this->Html->link(__('Returning Owner?'), '/Owners') ?>
-	</h1> 
+        <h1>
+        <?= $this->Html->link(__('New Canner?'), ['controller' => 'canners', 'action' => 'add']) ?>
+        <?= $this->Html->link(__('Find Your Canner?'), ['controller' => 'owners', 'action' => 'add']) ?>
+        <?= $this->Html->link(__('Returning Canner?'), '/Canners/entry') ?>
+        <?= $this->Html->link(__('Returning Owner?'), '/Owners/entry') ?>
+        </h1>
     </div>
+
+    <div class="header-image"><?= $this->Html->image('garbage001.jpg') ?></div>
 </header>
 
 <div class="row">

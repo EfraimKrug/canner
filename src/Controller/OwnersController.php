@@ -27,6 +27,11 @@ class OwnersController extends AppController
 
         $this->set(compact('owners'));
     }
+ 
+    public function entry()
+    {
+
+    }
 
     /**
      * View method

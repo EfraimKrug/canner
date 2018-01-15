@@ -43,12 +43,28 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+    	$this->loadComponent('Auth', [
+        'authorize' => ['Controller'], // Added this line
+	'unauthorizedRedirect' => $this->referer(),
+    	]);
 
+	$this->Auth->allow(['display', 'password', 'reset', 'logout']);
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
-    }
+        	//$this->loadComponent('Security');
+        	//$this->loadComponent('Csrf');
+    	}
+
+	public function isAuthorized($user)
+	{
+    	// Admin can access every action
+    	if (in_array($user['role'], ['admin', 'user'])) {
+        	return true;
+    	}
+
+    	// Default deny
+    	return false;
+	}
 }
