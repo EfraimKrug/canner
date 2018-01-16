@@ -65,7 +65,11 @@ class CannersController extends AppController
     {
         $canner = $this->Canners->newEntity();
         if ($this->request->is('post')) {
+	    $userID = $userID = $this->request->params['?']['userID'];
             $canner = $this->Canners->patchEntity($canner, $this->request->getData());
+	    $canner->user_id = $userID;
+	    $canner->role = 'canner';
+	    $canner->start_date = date('Y-m-d H:i:s');
             if ($this->Canners->save($canner)) {
                 $this->Flash->success(__('The canner has been saved.'));
 

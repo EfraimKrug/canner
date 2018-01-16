@@ -57,7 +57,15 @@ class OwnersController extends AppController
     public function add()
     {
         $owner = $this->Owners->newEntity();
+	$userID = $this->request->params['?']['userID'];
         if ($this->request->is('post')) {
+            $owner = $this->Owners->newEntity();
+       	    $userID = $this->request->params['?']['userID'];
+ 
+            $owner->user_id = $userID;
+            $owner->role = 'canner';
+            $owner->start_date = date('Y-m-d H:i:s');
+
             $owner = $this->Owners->patchEntity($owner, $this->request->getData());
             if ($this->Owners->save($owner)) {
                 $this->Flash->success(__('The owner has been saved.'));

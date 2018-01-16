@@ -13,7 +13,6 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
-
     /**
      * Index method
      *
@@ -52,10 +51,11 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+	    $user->role = "user";
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+		return $this->redirect(['action' => 'usertype', 'userID' => $user->id]);
+		#return $this->usertype();
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
@@ -116,6 +116,29 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
+    }
+
+	
+    public function usertype()
+    {
+	if($this->request->is('post')){
+		$cntrl = "Users";
+		$userID = $this->request->params['?']['userID'];
+		$user = $this->Users->get($userID);
+		$user->modified = date('Y-m-d H:i:s'); 
+		if($this->request->data['type'] == 0){
+			$user->role = 'owner';
+			$cntrl = "Owners";
+		} else {
+			if($this->request->data['type'] == 1){
+				$user->role = 'canner';
+				$cntrl = "Canners";
+			}
+		}
+		if ($this->Users->save($user)){
+			return $this->redirect(['controller' => $cntrl, 'action' => 'add', 'userID' => $userID]);
+		}
+    	}
     }
 
     public function logout()

@@ -75,7 +75,7 @@ class UsersTable extends Table
             ->scalar('role')
             ->maxLength('role', 20)
             ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'author']],
+                'rule' => ['inList', ['admin', 'user']],
                 'message' => 'Please enter a valid role'
             ]);;
 
