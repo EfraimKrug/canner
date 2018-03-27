@@ -1,0 +1,91 @@
+drop Table user;
+create Table user (
+		id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		username VARCHAR(50),
+		password VARCHAR(255),
+		role VARCHAR(20),
+		created DATETIME DEFAULT NULL,
+		modified DATETIME DEFAULT NULL
+);
+
+drop Table canner;
+create Table canner(
+		id integer not null PRIMARY KEY AUTO_INCREMENT,
+		firstname varchar(20),
+		lastname varchar(20),
+		email varchar(50),
+		startdate varchar(10),
+                address varchar(30),
+                state varchar(15),
+                country varchar(25)
+);
+
+drop Table owner;
+create Table owner(
+                id int not null PRIMARY KEY AUTO_INCREMENT,
+                firstname varchar(20),
+                lastname varchar(20),
+                email varchar(50),
+                startdate varchar(10),
+		address varchar(30),
+		state varchar(15),
+		country varchar(25)
+);                  
+		    
+drop Table canner_todo;
+create Table canner_todo(
+		cannerid int not null primary key,
+		ownerid int not null
+);		
+
+drop Table canner_done;
+create Table canner_done(
+		cannerid int not null primary key,
+		ownerid int not null,
+		datedone varchar(10)
+);
+
+drop Table canner_deal;
+create Table canner_deal(
+		cannerid int not null,
+		payday int not null,
+		payamount decimal,
+		previouspayamount decimal,
+		datechanged varchar(10),
+		primary Key (cannerid, datechanged)
+);
+
+drop Table owner_deal;
+create Table owner_deal(
+		ownerid int not null,
+		payday int not null,
+		payamount decimal,
+		previouspayamount decimal,
+		datechanged varchar(10),
+		notes varchar(200),
+		Primary Key (OwnerID, DateChanged)
+);
+
+drop Table owner_done;
+create Table owner_done(
+		ownerid int not null,
+		cannerid int not null,
+		datedone varchar(10),
+		Primary Key (OwnerID, DateDone) 
+);
+
+drop Table owner_paid;
+create Table owner_paid(
+ 		id int not null PRIMARY KEY AUTO_INCREMENT,
+		ownerid int not null,
+		amount decimal,
+		datepaid varchar(10)
+);
+
+drop Table canner_paid;
+create Table canner_paid(
+		id int not null PRIMARY KEY AUTO_INCREMENT,
+		cannerid int not null,
+		amount decimal,
+		datepaid varchar(10)
+); 

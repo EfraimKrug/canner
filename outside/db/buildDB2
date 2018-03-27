@@ -1,0 +1,113 @@
+drop Table canner_todos;
+drop Table canner_dones;
+drop Table canner_contracts;
+drop Table owner_contracts;
+drop Table owner_dones;
+drop Table owner_payments;
+drop Table canner_payments;
+
+drop Table canners;
+drop Table owners;
+drop Table users;
+
+create Table users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(50),
+                password VARCHAR(255),
+                role VARCHAR(20),
+                created DATETIME DEFAULT NULL,
+                modified DATETIME DEFAULT NULL
+);
+
+create Table canners(
+                id integer not null PRIMARY KEY AUTO_INCREMENT,
+                user_id INT NOT NULL,
+                first_name varchar(20),
+                last_name varchar(20),
+                email varchar(50),
+                start_date DATETIME,
+                address varchar(30),
+                state varchar(15),
+                country varchar(25),
+                FOREIGN KEY user_key (user_id) REFERENCES users(id)
+);
+
+create Table owners(
+                id int not null PRIMARY KEY AUTO_INCREMENT,
+                user_id INT NOT NULL,
+                first_name varchar(20),
+                last_name varchar(20),
+                email varchar(50),
+                start_date DATETIME,
+                address varchar(30),
+                state varchar(15),
+                country varchar(25),
+                FOREIGN KEY user_key (user_id) REFERENCES users(id)
+
+);
+
+create Table canner_todos(
+		id int not null primary key auto_increment,
+		canner_id int not null,
+		owner_id int not null,
+		FOREIGN KEY canner_key (canner_id) REFERENCES canners(user_id),
+		FOREIGN KEY owner_key (owner_id) REFERENCES owners(user_id)	
+);		
+
+create Table canner_dones(
+		id int not null primary key auto_increment,
+		canner_id int not null,
+		owner_id int not null,
+		date_done DATETIME,
+                FOREIGN KEY canner_key (canner_id) REFERENCES canners(user_id),
+                FOREIGN KEY owner_key (owner_id) REFERENCES owners(user_id)   
+);
+
+create Table canner_contracts(
+		canner_id int not null,
+		pay_day int not null,
+		pay_amount decimal,
+		previous_pay_amount decimal,
+		date_changed DATETIME,
+		primary Key (canner_id, date_changed),
+                FOREIGN KEY canner_key (canner_id) REFERENCES canners(user_id)
+);
+
+create Table owner_contracts(
+		owner_id int not null,
+		pay_day int not null,
+		pay_amount decimal,
+		previous_pay_amount decimal,
+		date_changed DATETIME,
+		notes varchar(200),
+		Primary Key (owner_id, date_changed),
+                FOREIGN KEY owner_key (owner_id) REFERENCES owners(user_id)
+);
+
+create Table owner_dones(
+		owner_id int not null,
+		canner_id int not null,
+		date_done DATETIME,
+		Primary Key (owner_id, date_done), 
+                FOREIGN KEY canner_key (canner_id) REFERENCES canners(user_id),
+                FOREIGN KEY owner_key (owner_id) REFERENCES owners(user_id)
+);
+
+create Table owner_payments(
+ 		id int not null PRIMARY KEY AUTO_INCREMENT,
+		owner_id int not null,
+		amount decimal,
+		date_paid DATETIME,
+                FOREIGN KEY owner_key (owner_id) REFERENCES owners(user_id)
+
+);
+
+create Table canner_payments(
+		id int not null PRIMARY KEY AUTO_INCREMENT,
+		canner_id int not null,
+		amount decimal,
+		date_paid DATETIME,
+                FOREIGN KEY canner_key (canner_id) REFERENCES canners(user_id)
+);
+
+ 
