@@ -11,8 +11,10 @@
         <li><?= $this->Form->postLink(__('Delete Canner'), ['action' => 'delete', $canner->id], ['confirm' => __('Are you sure you want to delete # {0}?', $canner->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Canners'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Canner'), ['action' => 'add']) ?> </li>
+	<!--
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+	-->
         <li><?= $this->Html->link(__('List Canner Contracts'), ['controller' => 'CannerContracts', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Canner Contract'), ['controller' => 'CannerContracts', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Canner Dones'), ['controller' => 'CannerDones', 'action' => 'index']) ?> </li>
@@ -21,17 +23,21 @@
         <li><?= $this->Html->link(__('New Canner Payment'), ['controller' => 'CannerPayments', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Canner Todos'), ['controller' => 'CannerTodos', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Canner Todo'), ['controller' => 'CannerTodos', 'action' => 'add']) ?> </li>
+	<!--
         <li><?= $this->Html->link(__('List Owner Dones'), ['controller' => 'OwnerDones', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Owner Done'), ['controller' => 'OwnerDones', 'action' => 'add']) ?> </li>
+	-->
     </ul>
 </nav>
 <div class="canners view large-9 medium-8 columns content">
     <h3><?= h($canner->id) ?></h3>
     <table class="vertical-table">
+	<!--
         <tr>
             <th scope="row"><?= __('User') ?></th>
             <td><?= $canner->has('user') ? $this->Html->link($canner->user->id, ['controller' => 'Users', 'action' => 'view', $canner->user->id]) : '' ?></td>
         </tr>
+	-->
         <tr>
             <th scope="row"><?= __('First Name') ?></th>
             <td><?= h($canner->first_name) ?></td>
@@ -56,10 +62,12 @@
             <th scope="row"><?= __('Country') ?></th>
             <td><?= h($canner->country) ?></td>
         </tr>
+	<!--
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($canner->id) ?></td>
         </tr>
+	-->
         <tr>
             <th scope="row"><?= __('Start Date') ?></th>
             <td><?= h($canner->start_date) ?></td>

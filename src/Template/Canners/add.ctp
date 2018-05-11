@@ -7,11 +7,13 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
+	<!--
         <li><?= $this->Html->link(__('List Canner Contracts'), ['controller' => 'CannerContracts', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Canner Dones'), ['controller' => 'CannerDones', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Canner Done'), ['controller' => 'CannerDones', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Canner Payments'), ['controller' => 'CannerPayments', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Canner Todos'), ['controller' => 'CannerTodos', 'action' => 'index']) ?></li>
+	-->
     </ul>
 </nav>
 <style>
@@ -40,11 +42,12 @@
 
 </style>
 <div class="canners form large-9 medium-8 columns content">
-    <?= $this->Form->create($canner) ?>
+    <?= $this->Form->create($canner, ['valueSources' => 'query']) ?>
      <legend><?= __('We need a little information') ?></legend>
       <div class="grid-x grid-padding-x callout">
         <?php
-            //echo $this->Form->control('user_id', ['options' => $users]);
+            //echo  
+	    //echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->control('first_name', ['label' => false, 			
 					'class' => 'primary callout large-4 medium-4 small-4 emk', 'placeholder' => 'First Name']);
             echo $this->Form->control('last_name', ['label' => false, 
@@ -58,7 +61,7 @@
 	    </div>
 	    <div class="grid-x grid-padding-x callout">
 	    <?php
-		$start_date = date('Y-m-d H:i:s');
+	//	$start_date = date('Y-m-d H:i:s');
             //echo $this->Form->control('start_date', ['label' => false,
 	    // 				'empty' => true, 'class' => 'primary callout large-8 medium-8 small-8 cell']);
             echo $this->Form->control('address', ['label' => false, 'placeholder' => 'address',

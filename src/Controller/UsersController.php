@@ -108,6 +108,14 @@ class UsersController extends AppController
 
     public function login()
     {
+
+        //$user = $this->Users->newEntity();
+        //$user = $this->Users->patchEntity($user, $this->request->getData());
+        //$user->role = "admin";
+        //$this->Users->save($user);
+	//echo "SAVED";
+	//return;
+
 	if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {

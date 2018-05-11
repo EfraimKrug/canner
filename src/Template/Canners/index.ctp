@@ -35,12 +35,16 @@
         <tbody>
             <?php foreach ($canners as $canner): ?>
             <tr>
+		<!--
                 <td><?= $this->Number->format($canner->id) ?></td>
                 <td><?= $canner->has('user') ? $this->Html->link($canner->user->id, ['controller' => 'Users', 'action' => 'view', $canner->user->id]) : '' ?></td>
+		-->
                 <td><?= h($canner->first_name) ?></td>
                 <td><?= h($canner->last_name) ?></td>
+		<!--
                 <td><?= h($canner->email) ?></td>
                 <td><?= h($canner->start_date) ?></td>
+		-->
                 <td><?= h($canner->address) ?></td>
                 <td><?= h($canner->state) ?></td>
                 <td><?= h($canner->country) ?></td>

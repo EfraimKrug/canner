@@ -65,6 +65,8 @@ class CannersController extends AppController
     {
         $canner = $this->Canners->newEntity();
         if ($this->request->is('post')) {
+	    print_r($canner);
+	    print_r($this->request->data);
 	    $userID = $userID = $this->request->params['?']['userID'];
             $canner = $this->Canners->patchEntity($canner, $this->request->getData());
 	    $canner->user_id = $userID;
