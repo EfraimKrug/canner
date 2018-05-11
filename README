@@ -1,0 +1,33 @@
+
+1) load onto your computer... git clone
+
+2) open a command window and navigate to directory
+
+3) start webserver: cake/bin server
+
+4) create a mysql database called 'canner'
+
+5) mysql: source outside/db/buildDB2
+
+6) open a browser with url: localhost:8765
+
+ it may be a little bit complicated to get the first
+ user into the database...
+
+ the way i do it is like this:
+
+ a) edit src/Controllers/UsersController.php
+
+ b) find function 'login'
+ 
+ c) uncomment the 6 commented lines
+
+ d) fire up the application in the browser 
+
+ d) on the login page - enter your new username/password
+
+ e) then go back and comment out those 6 lines again
+
+ f) and fire up the application and login with your new username/password...
+
+
